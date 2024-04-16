@@ -1,0 +1,10 @@
+ref c = (0,0) in
+let count = fun ()  -> let (x1, x2) = !c in c := (x1, x2 + 1) in
+let get () = let (x1,x2) = !c in x2 in
+(count, get)
+|||
+ref c = 0 in
+let count = fun ()  -> c := !c - 1 in
+let get () = -!c in
+(count, get)
+

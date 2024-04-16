@@ -1,0 +1,18 @@
+(* based on JavaScript Event Listeners:
+   https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener *)
+let createElement listeners =
+  let (onkeydown,onkeyup) = listeners in
+  ref keydown = 0 in
+  let keypress () {} = keydown := 1; onkeydown (); keydown := 0; onkeyup (); !keydown in
+  keypress
+in 
+createElement
+
+|||_(unit->unit) * (unit->unit) -> unit -> int
+
+let createElement listeners =
+  let (onkeydown,onkeyup) = listeners in
+  let keypress () {} = onkeydown (); onkeyup (); 0 in
+  keypress
+in 
+createElement

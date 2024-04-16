@@ -1,0 +1,10 @@
+
+ref x = 0 in 
+let inc = (fun () -> x:=!x+1) in
+let get = (fun () -> !x) in
+(inc , get)
+|||_(unit->unit)*(unit->int)
+ref x = 0 in 
+let inc = (fun () -> x:=!x-1) in
+let get = (fun () -> -!x) in
+(inc , get)

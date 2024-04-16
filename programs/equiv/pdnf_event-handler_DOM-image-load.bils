@@ -1,0 +1,40 @@
+(* based on https://dom.spec.whatwg.org/#events *)
+
+ref imageLoaded = false in
+
+let myImage args =
+  let (addEventListener,log) = args in
+  let imageLoadHandler () =
+    imageLoaded := true;
+    log !imageLoaded
+  in
+  addEventListener imageLoadHandler
+in
+myImage
+
+|||_(((unit->unit)->unit)*(bool->unit))->unit
+
+let f args =
+  let (g,h) = args in
+  let j () = h true in g j
+in f
+
+(*
+
+// Get the image element by its ID
+var myImage = document.getElementById('myImage');
+
+// Internal variable to track whether the image has loaded
+var imageLoaded = false;
+
+// Define a function that will be called when the image has finished loading
+function imageLoadHandler() {
+    // Set the internal variable to true
+    imageLoaded = true;
+    console.log('Image loaded! imageLoaded is now true.');
+}
+
+// Attach an event listener to the image, listening for the 'load' event
+myImage.addEventListener('load', imageLoadHandler);
+
+*)

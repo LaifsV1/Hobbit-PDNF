@@ -1,0 +1,14 @@
+ref y = 0 in
+let set = fun z
+  -> y := z in
+let get = fun ()
+  -> !y in
+(set , get)
+|||
+ref y1 = 0 in
+ref y2 = 0 in
+let set = fun z
+  -> if z mod 2 == 0 then y1 := z else (y1 := 1; y2 := z) in
+let get = fun () 
+  -> if !y1 mod 2 == 0 then !y1 else !y2 in
+(set , get)

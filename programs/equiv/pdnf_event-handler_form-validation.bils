@@ -1,0 +1,93 @@
+(* based on Android button submits a form after some validation *)
+
+ref isValid = false in
+
+let submitButton_setOnClickListener args =
+  let (validate , submit_form) = args in
+  
+  let onClick () =
+    let is_valid = validate () in
+
+    (if is_valid then
+       isValid := true
+     else
+       isValid := false); 
+
+    (if !isValid then
+      submit_form (is_valid));
+
+    isValid := false;
+  in
+
+  onClick
+in 
+submitButton_setOnClickListener
+
+|||_((unit->bool)* (* username_validate *)
+     (bool->unit)) (* assert *)
+     ->unit->unit  (* onClick *)
+
+ref isValid = false in
+
+let submitButton_setOnClickListener args =
+  let (validate , submit_form) = args in
+  
+  let onClick () =
+    let is_valid = validate () in
+
+    (if is_valid then
+       isValid := true
+     else
+       isValid := false); 
+
+    (if !isValid then
+      submit_form (true));
+
+    isValid := false;
+  in
+
+  onClick
+in 
+submitButton_setOnClickListener
+
+(* 
+
+// Flags for validation
+boolean isUsernameValid = false;
+boolean isPasswordValid = false;
+
+submitButton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        // Validation logic
+        String username = usernameEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        // Check if username is valid (e.g., not empty)
+        if (!TextUtils.isEmpty(username)) {
+            isUsernameValid = true;
+        } else {
+            isUsernameValid = false;
+            // Show an error message for invalid username
+            usernameEditText.setError("Username is required");
+        }
+
+        // Check if password is valid (e.g., minimum length)
+        if (password.length() >= 6) {
+            isPasswordValid = true;
+        } else {
+            isPasswordValid = false;
+            // Show an error message for invalid password
+            passwordEditText.setError("Password must be at least 6 characters");
+        }
+
+        // If both fields are valid, proceed with form submission
+        if (isUsernameValid && isPasswordValid) {
+            // Perform actions for successful form submission
+        } else {
+            // Handle the case where the form is not valid
+        }
+    }
+});
+
+*)

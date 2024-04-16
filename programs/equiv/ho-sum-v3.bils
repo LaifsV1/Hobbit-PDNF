@@ -1,0 +1,14 @@
+ref x = 0 in
+fun fr ->
+  let (f, r) = fr in
+  (if (r > 0) then x := !x + r);
+  f();
+  !x
+|||
+ref x = 0 in
+fun fr ->
+  let (f, r) = fr in
+  (if (r > 0) then x := !x - r);
+  f();
+  -!x
+

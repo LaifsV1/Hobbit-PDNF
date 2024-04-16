@@ -1,0 +1,23 @@
+(* based on Android CountDown Timer:
+   https://developer.android.com/reference/android/os/CountDownTimer *)
+let countdown_timer event =
+  ref counter = 3 in
+  let reset () = counter := 3 in
+  let onFinish () = reset (); event () in
+  let onTick () = counter := !counter - 1 in
+  let tick () = onTick (); if !counter == 0 then onFinish () in
+  tick
+in 
+countdown_timer
+
+|||
+
+let countdown_timer event =
+  ref counter = 4 in
+  let reset () = counter := 4 in
+  let onFinish () = reset (); event () in
+  let onTick () = counter := !counter - 1 in
+  let tick () = onTick (); if !counter == 1 then onFinish () in
+  tick
+in 
+countdown_timer

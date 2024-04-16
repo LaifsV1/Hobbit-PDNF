@@ -1,0 +1,52 @@
+(* Based on JavaSwing mouse action listener *)
+
+fun setText ->
+
+ref mouseClicked = fun x -> () in
+ref size_X = 2 in
+ref size_Y = 1 in
+
+(* origin: top-left *)
+ref mouseX = 0 in
+ref mouseY = 0 in
+
+let move_left  () = if !mouseX > 0 then mouseX := !mouseX - 1 in
+let move_right () = if !mouseX < (!size_X-1) then mouseX := !mouseX + 1 in
+let move_up    () = if !mouseY > 0 then mouseY := !mouseY - 1 in
+let move_down  () = if !mouseY < (!size_Y-1) then mouseY := !mouseY + 1 in
+
+let mouseListener event =
+  let (X,Y) = event in
+  setText(X,Y)
+in mouseClicked := mouseListener;
+
+let click () = !mouseClicked (!mouseX,!mouseY) in
+
+(move_left,move_right,move_up,move_down,click)
+
+|||
+
+fun setText ->
+
+(* rotated clockwise *)
+ref mouseClicked = fun x -> () in
+ref size_X = 1 in
+ref size_Y = 2 in
+
+(* origin: top-right *)
+ref mouseX = !size_X - 1 in
+ref mouseY = 0 in
+
+let move_down  () = if !mouseX > 0 then mouseX := !mouseX - 1 in
+let move_up    () = if !mouseX < (!size_X-1) then mouseX := !mouseX + 1 in
+let move_left  () = if !mouseY > 0 then mouseY := !mouseY - 1 in
+let move_right () = if !mouseY < (!size_Y-1) then mouseY := !mouseY + 1 in
+
+let mouseListener event =
+  let (X,Y) = event in
+  setText(X,Y)
+in mouseClicked := mouseListener;
+
+let click () = !mouseClicked (!mouseY,!size_X - (!mouseX + 1)) in
+
+(move_left,move_right,move_up,move_down,click)

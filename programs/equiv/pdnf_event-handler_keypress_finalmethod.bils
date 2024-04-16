@@ -1,0 +1,22 @@
+(* modification of keypress example *)
+
+ref c = 0 in
+let createElement evenlisteners =
+  if !c = 1 then _bot_ else (c := !c+1 ; 
+  let (onkeydown,onkeyup) = evenlisteners in
+  ref keydown = 0 in
+  let keypress () {} = keydown := 1; onkeydown (); keydown := 0; onkeyup (); !keydown in
+  keypress)
+in 
+createElement
+
+|||_(unit->unit) * (unit->unit) -> unit -> int
+
+ref c = 0 in
+let createElement evenlisteners =
+  if !c = 1 then _bot_ else (c := !c+1 ; 
+  let (onkeydown,onkeyup) = evenlisteners in
+  let keypress () {} = onkeydown (); onkeyup (); 0 in
+  keypress)
+in 
+createElement

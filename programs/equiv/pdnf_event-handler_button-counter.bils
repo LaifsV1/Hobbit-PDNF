@@ -1,0 +1,34 @@
+(* based on Android button that counts to 100 *)
+let myButton on100 =
+  ref clickCount = 0 in
+  let onClick () = if !clickCount < 100 then clickCount := !clickCount + 1 else on100 () in
+  let click () = onClick () in
+  let getClickCount () = !clickCount in
+  (getClickCount , click)
+in 
+myButton
+
+|||
+
+let myButton on100 =
+  ref clickCount = 1 in
+  let onClick () = if !clickCount < 101 then clickCount := !clickCount + 1 else on100 () in
+  let click () = onClick () in
+  let getClickCount () = !clickCount - 1 in
+  (getClickCount , click)
+in 
+myButton
+
+(* 
+Button myButton = findViewById(R.id.button_id);
+int clickCount = 0;
+
+myButton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        // Increment the counter on each click
+        clickCount++;
+    }
+});
+
+*)

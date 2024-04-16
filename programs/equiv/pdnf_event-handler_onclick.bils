@@ -1,0 +1,20 @@
+(* based on JavaScript:
+   https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener *)
+let createElement eventlistener =
+  ref onclick = eventlistener in
+  let click () = !onclick () in
+  let addClickListener function = onclick := function in
+  addClickListener , click
+in 
+createElement
+
+|||_(unit -> unit)-> ((unit -> unit) -> unit) * (unit -> unit)
+
+let createElement eventlistener =
+  ref clicked = false in
+  ref onclick = eventlistener in
+  let click () = clicked := true; !onclick (); clicked := false in
+  let addClickListener function = onclick := function in
+  addClickListener , click
+in 
+createElement

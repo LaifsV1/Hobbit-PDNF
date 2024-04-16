@@ -1,0 +1,17 @@
+(* if b is true, never terminates, so they can't disagree *)
+
+fun a -> fun b ->
+  let rec loop () =
+      if b then (loop ())
+      else ()
+  in
+  loop (); a b
+  
+|||_((bool -> unit) -> bool -> unit)
+
+fun a -> fun b ->
+  let rec loop () =
+      if b then (loop ())
+      else ()
+  in
+  loop (); a false

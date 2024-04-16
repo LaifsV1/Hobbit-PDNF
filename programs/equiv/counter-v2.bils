@@ -1,0 +1,12 @@
+(* more difficult version of `ri.ml` in SyTeCi testsuite *)
+
+ref c = 0 in
+let count = fun ()  -> c := !c + 1 in
+let get () = !c in
+(count, get)
+|||
+ref c = 0 in
+let count = fun ()  -> c := !c - 2 in
+let get () = -!c/2 in
+(count, get)
+

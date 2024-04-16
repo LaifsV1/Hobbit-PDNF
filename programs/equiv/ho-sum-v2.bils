@@ -1,0 +1,27 @@
+ref x = 0 in
+ref r = 0 in
+fun f ->
+  r := f();
+  (let rec while _ =
+    if (!r > 0) then (
+      x := !x + !r;
+      r := f();
+      while ()
+    ) else ()
+  in while ());
+  !x
+|||
+ref x = 0 in
+ref r = 0 in
+fun f ->
+  r := f();
+  (let rec while _  =
+    if (!r > 0) then (
+      x := !x - !r;
+      r := f();
+      while ()
+    ) else ()
+  in while ());
+  -!x
+
+

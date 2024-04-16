@@ -1,0 +1,50 @@
+(* based on Android EditText Listener that remembers if the text field was editted *)
+let myEditText args =
+  let (beforeTextChanged , onTextChanged , afterTextChanged) = args in
+  ref textChanged = false in
+  let onTextChanged () =
+    textChanged := true;
+    onTextChanged ()
+  in
+  let changeText () = beforeTextChanged (); onTextChanged (); afterTextChanged (); !textChanged in
+  changeText
+in 
+myEditText
+
+|||
+
+let g args =
+  let (a , b , c) = args in
+  let f () = a (); b (); c (); true in
+  f
+in 
+g
+
+
+(*
+
+EditText myEditText = findViewById(R.id.edit_text_id);
+boolean textChanged = false;
+
+myEditText.addTextChangedListener(new TextWatcher() {
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+        // Executed before text changes
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+        // Set the internal flag to true on text change
+        textChanged = true;
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        // Executed after text changes
+        if (textChanged) {
+            // Perform specific actions when the text changes
+        }
+    }
+});
+
+*)

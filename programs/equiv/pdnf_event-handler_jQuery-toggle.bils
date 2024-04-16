@@ -1,0 +1,84 @@
+(* based on jQuery: https://api.jquery.com/category/events/ *)
+
+let document_ready args =
+  let (on,toggle) = args in
+  ref isKeyPressed = false in
+
+  let keydown_event () =
+    isKeyPressed := true; !isKeyPressed
+  in
+  on keydown_event;
+
+  let keyup_event () =
+    isKeyPressed := false; !isKeyPressed
+  in
+  on keyup_event;
+
+  let click_event () =
+    if !isKeyPressed then toggle (); true
+  in
+  on click_event
+in 
+document_ready
+
+|||
+
+let document_ready args =
+  let (on,toggle) = args in
+  ref isKeyPressed = 0 in
+
+  let keydown_event () =
+    isKeyPressed := 1; !isKeyPressed == 1
+  in
+  on keydown_event;
+
+  let keyup_event () =
+    isKeyPressed := 0; !isKeyPressed == 1
+  in
+  on keyup_event;
+
+  let click_event () =
+    if !isKeyPressed == 1 then toggle (); true
+  in
+  on click_event
+in 
+document_ready
+
+
+(*
+// Use jQuery to wait for the document to be ready
+$(document).ready(function() {
+    // Get the button and paragraph elements by their IDs using jQuery
+    var toggleButton = $('#toggleButton');
+    var myParagraph = $('#myParagraph');
+
+    // Flag to check if the 'T' key is being held down
+    var isTKeyPressed = false;
+
+    // Event listener for keydown event on the document
+    $(document).on('keydown', function(event) {
+        if (event.key === 'T') {
+            isTKeyPressed = true;
+        }
+    });
+
+    // Event listener for keyup event on the document
+    $(document).on('keyup', function(event) {
+        if (event.key === 'T') {
+            isTKeyPressed = false;
+        }
+    });
+
+    // Define a function that will be called when the button is clicked
+    function toggleParagraph() {
+        // Check if the 'T' key is being held down
+        if (isTKeyPressed) {
+            // Use jQuery's toggle method to toggle the visibility of the paragraph
+            myParagraph.toggle();
+        }
+    }
+
+    // Attach an event listener to the button using jQuery, listening for the 'click' event
+    toggleButton.on('click', toggleParagraph);
+});
+*)
