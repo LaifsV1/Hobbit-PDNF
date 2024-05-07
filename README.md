@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11128050.svg)](https://doi.org/10.5281/zenodo.11128050)
+
 # Pushdown Normal-Form Bisimulation Tool
 
 `Hobbit-PDNF` is a bounded verification tool for bisimulation of higher-order terms based on [`Hobbit`](https://github.com/LaifsV1/Hobbit). 
