@@ -13,7 +13,7 @@ To run the tool on specific examples:
 ./hobbit_pdnf.native -i <path>
 ```
 ## Examples
-This repository contains 140 equivalences and 78 inequivalences. Of those, 11 equivalences with a `pdnf_` prefix are new examples that implement instances of the *well-bracketed state change* problem (10 inspired by Event Handlers in Android, JavaScript, Java Swing, jQuery, and the DOM Framework; and 1 based on a simplification of a CDMA-WLAN handoff protocol). *Well-bracketed state change* is a difficult problem for verification tools, and showcases our tool's ability to fully-automatically handle problems of unbounded stack.
+This repository contains 140 equivalences and 78 inequivalences. Of those, 11 equivalences with a `pdnf_` prefix are new examples that implement instances of the *well-bracketed state change* problem (10 inspired by Event Handlers in Android, JavaScript, Java Swing, jQuery, and the DOM Framework; and 1 based on a simplification of a CDMA-WLAN handoff protocol). *Well-bracketed state change* is a difficult problem for verification tools, which showcases our tool's ability to fully-automatically handle problems of unbounded stack.
 
 Examples can be found under `programs/equiv` for equivalences and `programs/inequiv` for inequivalences. Except for those marked with a `pdnf_` prefix, all examples were obtained from [`Hobbit`](https://doi.org/10.1007/978-3-030-99527-0_10).
 
