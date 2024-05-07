@@ -6,6 +6,7 @@
 
 It implements [*Pushdown Normal-Form Bisimulation*](https://arxiv.org/pdf/2311.01325) from the paper published at LICS 2024. It takes inspiration from *Pushdown Systems* to design a *Stackless Labelled Transition System* without loss of precision, which sits at the core of this verification tool. By being *stackless*, the technique is fully abstract for contextual equivalence while also decidable for a class of program terms that can reach configurations of unbounded size, so long as the source of unboundedness is the call stack.
 
+## Examples
 A script is provided to run all the examples:
 ```
 bash run-tests.sh
@@ -14,7 +15,6 @@ To run the tool on specific examples:
 ```
 ./hobbit_pdnf.native -i <path>
 ```
-## Examples
 This repository contains 140 equivalences and 78 inequivalences. Of those, 11 equivalences with a `pdnf_` prefix are new examples that implement instances of the *well-bracketed state change* problem (10 inspired by Event Handlers in Android, JavaScript, Java Swing, jQuery, and the DOM Framework; and 1 based on a simplification of a CDMA-WLAN handoff protocol). *Well-bracketed state change* is a difficult problem for verification tools, which showcases our tool's ability to fully-automatically handle problems of unbounded stack.
 
 Examples can be found under `programs/equiv` for equivalences and `programs/inequiv` for inequivalences. Except for those marked with a `pdnf_` prefix, all examples were obtained from [`Hobbit`](https://doi.org/10.1007/978-3-030-99527-0_10).
