@@ -5,7 +5,8 @@
 
 It implements [*Pushdown Normal-Form Bisimulation*](https://doi.org/10.1145/3661814.3662103) from the LICS 2024 paper. It takes inspiration from *Pushdown Systems* to design a *Stackless Labelled Transition System* without loss of precision, which sits at the core of this verification tool. By being *stackless*, the technique is fully abstract for contextual equivalence while also decidable for a class of program terms that can reach configurations of unbounded size, so long as the source of unboundedness is the call stack.
 
-Publication: [10.1145/3661814.3662103](https://doi.org/10.1145/3661814.3662103)
+**Publication DOI**: [10.1145/3661814.3662103](https://doi.org/10.1145/3661814.3662103)  
+**Venue**: LICS 2024
 
 ## Examples
 A script is provided to run all the examples:
